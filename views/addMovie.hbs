@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <h2>{{#if movie}}Editar Película{{else}}Añadir Película{{/if}}</h2>
+    <form action="{{#if movie}}/api/movies/{{movie._id}}{{else}}/api/movies{{/if}}" method="POST">
+        {{#if movie}}<input type="hidden" name="_method" value="PUT">{{/if}}
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{movie.name}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" name="description" required>{{movie.description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="genre" class="form-label">Género</label>
+            <input type="text" class="form-control" id="genre" name="genre" value="{{movie.genre}}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">{{#if movie}}Guardar Cambios{{else}}Añadir Película{{/if}}</button>
+    </form>
+</div>

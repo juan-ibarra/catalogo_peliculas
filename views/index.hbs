@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <h1>Catálogo de Películas</h1>
+    <a href="/add-movie" class="btn btn-primary mb-3">Añadir Película</a>
+    <div class="row">
+        {{#each movies}}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">{{this.description}}</p>
+                        <p class="card-text"><small class="text-muted">{{this.genre}}</small></p>
+                        <a href="/edit-movie/{{this._id}}" class="btn btn-warning">Editar</a>
+                        <form action="/api/movies/{{this._id}}" method="POST" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
